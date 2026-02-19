@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUHAMMAD HASSAN | LEAD DESIGN ENGINEER</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="experience-canvas"></canvas>
+
+
+
+    <div id="scroll-container">
+        <!-- Hero Section -->
+        <section id="hero" class="section">
+            <div class="container hero-split-container">
+                <div class="hero-left">
+
+                    <div class="hero-reveal-box">
+                        <h1 class="hero-title">BILAL</h1>
+                    </div>
+                    <div class="hero-reveal-box">
+                        <h2 class="hero-subtitle">Graphic Designer &<br>Social Media Handler</h2>
+                    </div>
+                    <div class="hero-reveal-box">
+                        <p class="hero-description">Crafting premium visual identities and strategic social narratives
+                            that drive global engagement.</p>
+                    </div>
+                    <div class="hero-cta-group">
+                        <a href="#projects" class="hero-btn-primary">View Projects</a>
+                        <a href="#contact" class="hero-btn-ghost">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="hero-visual-anchor">
+                        <div class="orb-scene">
+                            <div class="orb-core"><span>MB</span></div>
+                            <div class="orb-ring ring-1"></div>
+                            <div class="orb-ring ring-2"></div>
+                            <div class="orb-ring ring-3"></div>
+                            <div class="orb-tag-container container-1">
+                                <div class="orb-tag">Branding</div>
+                            </div>
+                            <div class="orb-tag-container container-2">
+                                <div class="orb-tag">Social Strategy</div>
+                            </div>
+                            <div class="orb-tag-container container-3">
+                                <div class="orb-tag">Visuals</div>
+                            </div>
+                            <div class="orb-tag-container container-4">
+                                <div class="orb-tag">Creativity</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container about-container">
+                <div class="about-grid">
+                    <div class="about-left">
+                        <div class="about-portrait-frame">
+                            <div class="portrait-glow"></div>
+                            <div class="avatar-container">
+                                <div class="avatar-circle">
+                                    <div class="avatar-box"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-right">
+                        <h2 class="section-title left-align shine-text">
+                            About Me
+                            <div class="title-underline"></div>
+                        </h2>
+                        <div class="about-content">
+                            <p class="stagger-text">As a creative graphic designer and social media handler, I
+                                specialize in crafting modern, high-impact visual identities that resonate with global
+                                audiences. My approach combines meticulous attention to detail with a deep understanding
+                                of digital engagement, ensuring every design serves a strategic purpose.</p>
+                            <p class="stagger-text">Having collaborated with a diverse range of international clients,
+                                I've developed a versatile aesthetic that bridges cultural gaps and drives results. I am
+                                dedicated to pushing the boundaries of visual storytelling, focusing on clean
+                                compositions and branding excellence that empowers businesses to stand out in the
+                                digital landscape.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title shine-text center-align" data-text="Skills">
+                    Skills
+                    <div class="title-underline center"></div>
+                </h2>
+                <div class="skills-grid">
+                    <!-- Design & Creative -->
+                    <div class="skill-card glass">
+                        <div class="card-border-shine"></div>
+                        <div class="card-content">
+                            <h3>Graphic Designing</h3>
+                            <p>Visual storytelling & professional layouts.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card glass">
+                        <div class="card-border-shine"></div>
+                        <div class="card-content">
+                            <h3>Social Media Post Design</h3>
+                            <p>High-engagement social creative assets.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card glass">
+                        <div class="card-border-shine"></div>
+                        <div class="card-content">
+                            <h3>Branding & Visual Identity</h3>
+                            <p>Unique branding ecosystems.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card glass">
+                        <div class="card-border-shine"></div>
+                        <div class="card-content">
+                            <h3>Photo Enhancement & Retouching</h3>
+                            <p>Premium retouching & color grading.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card glass">
+                        <div class="card-border-shine"></div>
+                        <div class="card-content">
+                            <h3>Web Banners & Marketing Creatives</h3>
+                            <p>Conversion-focused digital marketing ads.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card glass">
+                        <div class="card-border-shine"></div>
+                        <div class="card-content">
+                            <h3>Social Media Handling</h3>
+                            <p>Strategic channel management.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card glass">
+                        <div class="card-border-shine"></div>
+                        <div class="card-content">
+                            <h3>Content Optimization</h3>
+                            <p>Data-driven content performance.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card glass">
+                        <div class="card-border-shine"></div>
+                        <div class="card-content">
+                            <h3>Digital Campaign Support</h3>
+                            <p>End-to-end creative campaign assets.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <div class="container">
+                <h2 class="section-title shine-text center-align">
+                    EXPERIENCE
+                    <div class="title-underline center"></div>
+                </h2>
+                <div class="experience-grid cinematic-grid">
+                    <!-- Column 1: Projects & Agency -->
+                    <div class="exp-col col-left">
+                        <div class="exp-card highlight" data-number="01">
+                            <div class="card-glow"></div>
+                            <div class="exp-header">
+                                <span class="exp-location">Saudi Arabia</span>
+                                <h3 class="exp-title">World Cricket Festival</h3>
+                            </div>
+                            <p class="exp-body">Led high-impact visual communications for international sporting events,
+                                managing cultural branding and digital engagement.</p>
+                        </div>
+
+                        <div class="exp-card highlight" data-number="03">
+                            <div class="card-glow"></div>
+                            <div class="exp-header">
+                                <span class="exp-location">E-Commerce</span>
+                                <h3 class="exp-title">WamWearit</h3>
+                            </div>
+                            <p class="exp-body">Developed visual identity and marketing language for e-commerce growth,
+                                focusing on conversion-driven design.</p>
+                        </div>
+
+                        <div class="exp-card highlight" data-number="02">
+                            <div class="card-glow"></div>
+                            <div class="exp-header">
+                                <span class="exp-location">Digital Agency</span>
+                                <h3 class="exp-title">Haaameem Digital House</h3>
+                            </div>
+                            <p class="exp-body">Spearheaded social media strategies and graphic production, optimizing
+                                content flow for major brands.</p>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Tech & Freelance -->
+                    <div class="exp-col col-right">
+                        <div class="exp-card highlight" data-number="04">
+                            <div class="card-glow"></div>
+                            <div class="exp-header">
+                                <span class="exp-location">Technology</span>
+                                <h3 class="exp-title">Benchmark Software House</h3>
+                            </div>
+                            <p class="exp-body">Collaborated with development teams to provide UI/UX support,
+                                maintaining professional aesthetics.</p>
+                        </div>
+
+                        <div class="exp-card highlight" data-number="05">
+                            <div class="card-glow"></div>
+                            <div class="exp-header">
+                                <span class="exp-location">International</span>
+                                <h3 class="exp-title">Freelance Designer</h3>
+                            </div>
+                            <p class="exp-body">Consistently delivered premium design solutions for a global client
+                                base, building reputation through design excellence.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title shine-text center-align">
+                    PROJECTS
+                    <div class="title-underline center"></div>
+                </h2>
+                <div id="portfolio-tabs" class="tabs-container">
+                    <button class="tab-btn" data-filter="Banners">Banners</button>
+                    <button class="tab-btn" data-filter="LOGOS">Logos</button>
+                    <button class="tab-btn" data-filter="Packaging Design">Packaging Design</button>
+                    <button class="tab-btn" data-filter="Social Media Post">Social Media Post</button>
+
+                    <button class="tab-btn" data-filter="More designs">More Designs</button>
+                    <button class="tab-btn" data-filter="Wam wear">Wam Wear</button>
+                </div>
+                <div id="portfolio-container">
+                    <!-- Dynamic masonry grid injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title shine-text center-align" data-text="About">
+                    CONTACT ME
+                    <div class="title-underline center"></div>
+                </h2>
+                <div class="contact-card">
+                    <div class="contact-grid">
+                        <div class="contact-left">
+                            <h3 class="shine-text">Let's Work Together</h3>
+                        </div>
+                        <div class="contact-right">
+                            <div class="contact-buttons">
+                                <a href="mailto:bilalkhan69006@gmail.com" class="contact-btn-premium">
+                                    <span class="btn-label">Email</span>
+                                    <span class="btn-value">bilalkhan69006@gmail.com</span>
+                                </a>
+                                <a href="tel:+923259409240" class="contact-btn-premium">
+                                    <span class="btn-label">Primary Line</span>
+                                    <span class="btn-value">+92 325 940 9240</span>
+                                </a>
+                                <a href="tel:+923454023727" class="contact-btn-premium">
+                                    <span class="btn-label">Secondary Line</span>
+                                    <span class="btn-value">+92 345 402 3727</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="main-footer">
+            <div class="footer-center">
+                <div class="footer-line"></div>
+                <p>&copy; 2026 <span class="bright-text">Muhammad Bilal</span>. ALL RIGHTS RESERVED.</p>
+                <div class="footer-credit">
+                    <span>Designed & Engineered by </span>
+                    <a href="https://www.linkedin.com/in/muhammadhassan00/" target="_blank"
+                        class="hassan-link bright-text">M
+                        Hassan</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Gallery Overlay -->
+    <div id="gallery-overlay" class="overlay">
+        <div class="overlay-close">+</div>
+        <div class="overlay-content">
+            <div class="nav-arrow prev">&larr;</div>
+            <div class="overlay-main">
+                <img id="gallery-img" src="" alt="Gallery Image">
+                <div id="gallery-counter" class="gallery-counter">1 / 1</div>
+            </div>
+            <div class="nav-arrow next">&rarr;</div>
+        </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>
