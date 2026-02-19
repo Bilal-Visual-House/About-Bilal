@@ -76,6 +76,7 @@ class Experience {
         this.galleryManifest = [];
         this.currentGalleryIndex = 0;
         this.filteredImages = [];
+        this.touchStartX = 0;
 
         this.setup();
         this.bindEvents();
@@ -589,7 +590,44 @@ class Experience {
         document.querySelector('.nav-arrow.prev').addEventListener('click', () => this.navigateGallery(-1));
         document.querySelector('.nav-arrow.next').addEventListener('click', () => this.navigateGallery(1));
         window.addEventListener('keydown', e => { if (e.key === 'Escape') this.closeGallery(); if (e.key === 'ArrowLeft') this.navigateGallery(-1); if (e.key === 'ArrowRight') this.navigateGallery(1); });
-        document.getElementById('gallery-overlay').addEventListener('click', e => { if (e.target === document.getElementById('gallery-overlay')) this.closeGallery(); });
+
+        const overlay = document.getElementById('gallery-overlay');
+        overlay.addEventListener('click', e => { if (e.target === overlay) this.closeGallery(); });
+
+        // Swipe Support (Touch & Mouse)
+        const handleStart = (x) => { this.touchStartX = x; };
+        const handleEnd = (x) => {
+            const deltaX = x - this.touchStartX;
+            if (Math.abs(deltaX) > 50) {
+                if (deltaX > 0) this.navigateGallery(-1); // Swipe Right -> Prev
+                else this.navigateGallery(1);             // Swipe Left -> Next
+            }
+        };
+
+        overlay.addEventListener('touchstart', e => handleStart(e.touches[0].clientX), { passive: true });
+        overlay.addEventListener('touchend', e => handleEnd(e.changedTouches[0].clientX), { passive: true });
+
+        overlay.addEventListener('mousedown', e => handleStart(e.clientX));
+        overlay.addEventListener('mouseup', e => handleEnd(e.clientX));
+
+        // Form Submission Handling
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = contactForm.querySelector('.contact-btn-premium');
+                const originalText = btn.innerText;
+
+                btn.innerText = "Sending...";
+
+                // Simulated delay for cinematic feel
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                alert("Thank you! Your request has been sent successfully.");
+                contactForm.reset();
+                btn.innerText = originalText;
+            });
+        }
     }
 
     animate() {
