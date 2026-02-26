@@ -188,6 +188,72 @@ class Experience {
 
         this.showMoreBtn.addEventListener('click', () => this.showAllCurrent());
         this.updateShowMoreVisibility();
+        this.initLayoutToggle();
+    }
+
+    initLayoutToggle() {
+        const controls = document.getElementById('portfolio-layout-controls');
+        if (!controls) return;
+
+        // SVG icons
+        const gridSVG = `<svg viewBox="0 0 16 16"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>`;
+        const hSVG = `<svg viewBox="0 0 16 16"><rect x="1" y="5" width="4" height="6" rx="1"/><rect x="6" y="5" width="4" height="6" rx="1"/><rect x="11" y="5" width="4" height="6" rx="1"/><line x1="0" y1="13" x2="16" y2="13"/></svg>`;
+
+        controls.innerHTML = `
+            <button class="layout-toggle-btn active" id="btn-grid" title="Grid layout">${gridSVG}</button>
+            <button class="layout-toggle-btn" id="btn-hscroll" title="Horizontal scroll">${hSVG}</button>
+        `;
+
+        const btnGrid = controls.querySelector('#btn-grid');
+        const btnHScroll = controls.querySelector('#btn-hscroll');
+        const wrapper = document.querySelector('.portfolio-scroll-wrapper');
+
+        // Auto-scroll state
+        this._hScrollAnim = null;
+        this._hScrollPaused = false;
+
+        const startAutoScroll = () => {
+            if (this._hScrollAnim) return;
+            const speed = 0.6; // px per frame
+            const tick = () => {
+                if (!this._hScrollPaused && wrapper.classList.contains('layout-horizontal')) {
+                    wrapper.scrollLeft += speed;
+                    // Loop back to start
+                    if (wrapper.scrollLeft >= wrapper.scrollWidth - wrapper.clientWidth - 2) {
+                        wrapper.scrollLeft = 0;
+                    }
+                }
+                this._hScrollAnim = requestAnimationFrame(tick);
+            };
+            this._hScrollAnim = requestAnimationFrame(tick);
+        };
+
+        const stopAutoScroll = () => {
+            if (this._hScrollAnim) {
+                cancelAnimationFrame(this._hScrollAnim);
+                this._hScrollAnim = null;
+            }
+        };
+
+        wrapper.addEventListener('mouseenter', () => { this._hScrollPaused = true; });
+        wrapper.addEventListener('mouseleave', () => { this._hScrollPaused = false; });
+        wrapper.addEventListener('touchstart', () => { this._hScrollPaused = true; }, { passive: true });
+        wrapper.addEventListener('touchend', () => { this._hScrollPaused = false; }, { passive: true });
+
+        btnGrid.addEventListener('click', () => {
+            wrapper.classList.remove('layout-horizontal');
+            stopAutoScroll();
+            btnGrid.classList.add('active');
+            btnHScroll.classList.remove('active');
+        });
+
+        btnHScroll.addEventListener('click', () => {
+            wrapper.classList.add('layout-horizontal');
+            wrapper.scrollLeft = 0;
+            startAutoScroll();
+            btnHScroll.classList.add('active');
+            btnGrid.classList.remove('active');
+        });
     }
 
     showAllCurrent() {
@@ -615,18 +681,33 @@ class Experience {
         if (contactForm) {
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const btn = contactForm.querySelector('.contact-btn-premium');
-                const originalText = btn.innerText;
+                const btn = contactForm.querySelector('.cf-submit');
+                const textSpan = btn ? btn.querySelector('.cf-submit-text') : null;
+                const originalText = textSpan ? textSpan.innerText : 'Send Message';
 
-                btn.innerText = "Sending...";
+                if (textSpan) textSpan.innerText = 'Sending...';
 
                 // Simulated delay for cinematic feel
                 await new Promise(resolve => setTimeout(resolve, 1500));
 
-                alert("Thank you! Your request has been sent successfully.");
+                alert('Thank you! Your request has been sent successfully.');
                 contactForm.reset();
-                btn.innerText = originalText;
+                if (textSpan) textSpan.innerText = originalText;
             });
+        }
+
+        // Contact Section: IntersectionObserver stagger reveal
+        const contactAnimEls = document.querySelectorAll('[data-contact-animate]');
+        if (contactAnimEls.length) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            contactAnimEls.forEach(el => io.observe(el));
         }
     }
 

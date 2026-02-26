@@ -260,6 +260,7 @@
                     <button class="tab-btn" data-filter="More designs">More Designs</button>
                     <button class="tab-btn" data-filter="Wam wear">Wam Wear</button>
                 </div>
+                <div id="portfolio-layout-controls" class="layout-toggle-group"></div>
                 <div id="portfolio-container">
                     <!-- Dynamic masonry grid injected via JS -->
                 </div>
@@ -269,75 +270,74 @@
         <!-- Contact Section -->
         <section id="contact" class="section">
             <div class="container">
-                <h2 class="section-title shine-text center-align" data-text="About">
-                    CONTACT ME
-                    <div class="title-underline center"></div>
-                </h2>
-                <div class="contact-card">
-                    <div class="contact-grid">
-                        <!-- Row 1: Headers -->
-                        <div class="contact-left header-row">
-                            <h3 class="shine-text title-large">Let's Work Together</h3>
-                        </div>
-                        <div class="contact-right header-row">
-                        </div>
+                <!-- Section header -->
+                <div class="contact-header" data-contact-animate>
+                    <h2 class="section-title shine-text center-align">
+                        CONTACT ME
+                        <div class="title-underline center"></div>
+                    </h2>
+                    <p class="contact-subtitle">
+                        Have a project in mind or need creative visuals for your brand?<br>
+                        Tell me what kind of design you want and let's create something impactful together.
+                    </p>
+                </div>
 
-                        <div class="contact-left-wrapper">
-                            <div class="contact-info-links">
-                                <!-- Row 2 -->
-                                <a href="mailto:bilalkhan69006@gmail.com" class="info-link">
-                                    <span class="info-label">Email</span>
-                                    <span class="info-value">bilalkhan69006@gmail.com</span>
-                                </a>
-                                <!-- Row 3 -->
-                                <a href="tel:+923259409240" class="info-link">
-                                    <span class="info-label">Phone</span>
-                                    <span class="info-value">+92 325 940 9240</span>
-                                </a>
-                                <!-- Row 4 -->
-                                <a href="tel:+923000000000" class="info-link">
-                                    <span class="info-label">2nd Phone</span>
-                                    <span class="info-value">+92 300 000 0000</span>
-                                </a>
-                                <!-- Row 5 -->
-                                <a href="https://instagram.com/m.bilal.design" target="_blank"
-                                    class="info-link no-border">
-                                    <span class="info-label">Instagram</span>
-                                    <span class="info-value">@m.bilal.design</span>
-                                </a>
-                            </div>
-                        </div>
+                <!-- Two-column body -->
+                <div class="contact-body">
 
-                        <div class="contact-right-wrapper">
-                            <form id="contact-form" class="cinematic-form">
-                                <div class="form-grid">
-                                    <!-- Row 2 -->
-                                    <div class="form-group">
-                                        <input type="text" name="name" placeholder="Name" required
-                                            title="Please enter your name">
-                                        <div class="line"></div>
-                                    </div>
-                                    <!-- Row 3 -->
-                                    <div class="form-group">
-                                        <input type="tel" name="phone" placeholder="Phone" required
-                                            title="Please enter your phone number">
-                                        <div class="line"></div>
-                                    </div>
-                                    <!-- Row 4 -->
-                                    <div class="form-group">
-                                        <input type="email" name="email" placeholder="Email" required
-                                            title="Please enter a valid email">
-                                        <div class="line"></div>
-                                    </div>
-                                    <!-- Row 5 -->
-                                    <div class="form-group">
-                                        <button type="submit" class="contact-btn-premium">Submit</button>
-                                    </div>
-                                </div>
-                                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                            </form>
+                    <!-- LEFT: Info -->
+                    <div class="contact-info-col" data-contact-animate>
+                        <p class="contact-info-eyebrow">Get in touch</p>
+
+                        <div class="contact-info-list">
+                            <a href="mailto:bilalkhan69006@gmail.com" class="contact-info-item">
+                                <span class="ci-label">Email</span>
+                                <span class="ci-value">bilalkhan69006@gmail.com</span>
+                            </a>
+                            <a href="tel:+923259409240" class="contact-info-item">
+                                <span class="ci-label">Phone</span>
+                                <span class="ci-value">+92 325 940 9240</span>
+                            </a>
+                            <a href="tel:+923269188971" class="contact-info-item">
+                                <span class="ci-label">Phone 2</span>
+                                <span class="ci-value">+92 326 918 8971</span>
+                            </a>
+                            <a href="https://instagram.com/m.bilal.design" target="_blank" class="contact-info-item">
+                                <span class="ci-label">Instagram</span>
+                                <span class="ci-value">@m.bilal.design</span>
+                            </a>
                         </div>
                     </div>
+
+                    <!-- RIGHT: Form -->
+                    <div class="contact-form-col" data-contact-animate>
+                        <form id="contact-form" class="contact-form-new">
+                            <div class="cf-field">
+                                <input type="text" name="name" placeholder="Your Name" required autocomplete="off">
+                                <span class="cf-line"></span>
+                            </div>
+                            <div class="cf-field">
+                                <input type="tel" name="phone" placeholder="Phone Number" required autocomplete="off">
+                                <span class="cf-line"></span>
+                            </div>
+                            <div class="cf-field">
+                                <input type="email" name="email" placeholder="Email Address" required
+                                    autocomplete="off">
+                                <span class="cf-line"></span>
+                            </div>
+                            <div class="cf-field">
+                                <textarea name="message" rows="4"
+                                    placeholder="What kind of design you want?"></textarea>
+                                <span class="cf-line"></span>
+                            </div>
+                            <button type="submit" class="cf-submit">
+                                <span class="cf-submit-text">Send Message</span>
+                                <span class="cf-submit-shine"></span>
+                            </button>
+                            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </section>
