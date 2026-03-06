@@ -21,11 +21,10 @@ const CONFIG = {
     },
     bloom: { strength: 1.2, radius: 0.4, threshold: 0.85 },
     portfolio: [
-        { name: 'Banners', path: 'info/Banners/', ratio: 'wide', images: ['banner-1.jpg', 'banner-2.jpg', 'banner-3.jpg', 'banner-4.jpg', 'banner-5.jpg'] },
+        { name: 'Banners', path: 'info/Banners/', ratio: 'wide', images: ['banner-1.jpg', 'banner-2.jpg', 'banner-3.jpg', 'banner-4.jpg', 'banner-5.jpg', 'wam-wear-1.webp', 'wam-wear-2.jpg', 'wam-wear-3.webp', 'wam-wear-4.jpg'] },
         { name: 'LOGOS', path: 'info/LOGOS/', ratio: 'square', images: ['logo-abha-eagles.png', 'logo-al-khobar-sharks.png', 'logo-aula-guardians.png', 'logo-chatgpt.png', 'logo-dammam-dragons.png', 'logo-daredevils.png', 'logo-doha-dynamos.png', 'logo-football-fest-1.jpg', 'logo-gt4.jpg', 'logo-infinity-talent-1.png', 'logo-jeddah-stallions.png', 'logo-lince-chargers-1.png', 'logo-lince-chargers-2.png', 'logo-pr-1.jpg', 'logo-pr-2.jpg', 'logo-riyadh-rattlers.png', 'logo-wa-1.jpg', 'logo-wa-2.jpg'] },
         { name: 'Packaging Design', path: 'info/Packaging Design/', ratio: 'portrait', images: ['packaging-catty-chinns-post.jpg', 'packaging-catty-chins-mockup.jpg', 'packaging-catty-chips-mockup.jpg', 'packaging-nimko-redesign.jpg', 'packaging-pingo-mockup.jpg', 'packaging-pingo-poster.jpg'] },
         { name: 'Social Media Post', path: 'info/Social Media Post/', ratio: 'square', images: ['social-1-day.jpg', 'social-2-days-post.jpg', 'social-2-days.jpg', 'social-3-days.jpg', 'social-burger.jpg', 'social-coffee.jpg', 'social-f2-post.jpg', 'social-giant-trophy.jpg', 'social-ielts.jpg', 'social-lahore.jpg', 'social-pakistan-team.jpg', 'social-sa-team.jpg', 'social-shahi-qila.jpg', 'social-shop-it.png', 'social-srilanka-team.jpg', 'social-wa-1.jpg', 'social-wa-2.jpg', 'social-wa-3.jpg', 'social-wa-4.jpg', 'social-wa-5.jpg', 'social-wa-6.jpg', 'social-wcf-afghanistan.jpg', 'social-wcf-back.jpg', 'social-wcf-bangladesh.jpg', 'social-wcf-saudi-green.jpg', 'social-wcf-saudi-white.jpg', 'social-wcf-trophy.jpg', 'social-wcf-west-indies.jpg'] },
-        { name: 'Wam wear', path: 'info/Wam wear/', ratio: 'portrait', images: ['wam-wear-1.webp', 'wam-wear-2.jpg', 'wam-wear-3.webp', 'wam-wear-4.jpg'] },
         { name: 'More designs', path: 'info/More designs/', ratio: 'wide', images: ['design-1.jpg', 'design-2.jpg', 'design-3.jpg', 'design-4.jpg', 'design-5.jpg', 'design-6.jpg', 'design-7.jpg', 'design-8.jpg', 'design-nft-1.jpg', 'design-nft-2.jpg'] }
     ]
 };
@@ -36,6 +35,10 @@ const SHADERS = {
         fragment: `void main() { gl_FragColor = vec4(0.043, 0.043, 0.043, 1.0); }` // #0b0b0b equivalent
     }
 };
+
+/**
+ * 3D GALLERY ENGINE (Ported from React requirement)
+ */
 
 class Experience {
     constructor() {
@@ -176,8 +179,8 @@ class Experience {
             item.dataset.category = imgObj.category;
             item.dataset.index = idx;
 
-            // Initially show only first 7 images
-            const isInitial = idx < 7;
+            // Initially show only first 9 images
+            const isInitial = idx < 9;
             item.style.display = isInitial ? 'block' : 'none';
             item.style.opacity = isInitial ? '1' : '0';
 
@@ -265,7 +268,7 @@ class Experience {
             return isMatch && item.style.display === 'none';
         });
 
-        const toShow = matchingHiddenItems.slice(0, 6);
+        const toShow = matchingHiddenItems.slice(0, 9);
 
         toShow.forEach(item => {
             item.style.display = 'block';
@@ -575,15 +578,15 @@ class Experience {
                 ? this.galleryManifest
                 : this.galleryManifest.filter(m => m.category === category);
 
-            // Always show only first 7 images initially
-            const toShow = matchingItems.slice(0, 7);
+            // Always show only first 9 images initially
+            const toShow = matchingItems.slice(0, 9);
             toShow.forEach(item => {
                 item.style.display = 'block';
             });
         });
 
         // 3. Cinematic Reveal
-        const itemsToAnimate = matchingItems.slice(0, 7);
+        const itemsToAnimate = matchingItems.slice(0, 9);
         tl.fromTo(itemsToAnimate,
             { opacity: 0, y: 30 },
             {
@@ -642,7 +645,12 @@ class Experience {
 
     bindEvents() {
         window.addEventListener('mousemove', e => { this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1; this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1; });
-        window.addEventListener('resize', () => { this.camera.aspect = window.innerWidth / window.innerHeight; this.camera.updateProjectionMatrix(); this.renderer.setSize(window.innerWidth, window.innerHeight); this.composer.setSize(window.innerWidth, window.innerHeight); });
+        window.addEventListener('resize', () => {
+            this.camera.aspect = window.innerWidth / window.innerHeight;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(window.innerWidth, window.innerHeight);
+            this.composer.setSize(window.innerWidth, window.innerHeight);
+        });
 
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -681,18 +689,51 @@ class Experience {
         if (contactForm) {
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const btn = contactForm.querySelector('.cf-submit');
-                const textSpan = btn ? btn.querySelector('.cf-submit-text') : null;
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const textSpan = submitBtn ? submitBtn.querySelector('.cf-submit-text') : null;
                 const originalText = textSpan ? textSpan.innerText : 'Send Message';
 
+                const formData = new FormData(contactForm);
+                // formData.append("access_key", "a9b79e39-9d6b-42f7-bc4a-5376583cc87e"); // Handled in HTML hidden input
+
+                const resultMsg = document.getElementById('contact-result');
+
                 if (textSpan) textSpan.innerText = 'Sending...';
+                if (resultMsg) resultMsg.style.display = 'none';
+                submitBtn.disabled = true;
 
-                // Simulated delay for cinematic feel
-                await new Promise(resolve => setTimeout(resolve, 1500));
+                try {
+                    const response = await fetch("https://api.web3forms.com/submit", {
+                        method: "POST",
+                        body: formData
+                    });
 
-                alert('Thank you! Your request has been sent successfully.');
-                contactForm.reset();
-                if (textSpan) textSpan.innerText = originalText;
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        if (resultMsg) {
+                            resultMsg.innerText = "Success! Your message has been sent.";
+                            resultMsg.className = "contact-result-msg success";
+                            resultMsg.style.display = 'block';
+                        }
+                        contactForm.reset();
+                    } else {
+                        if (resultMsg) {
+                            resultMsg.innerText = "Error: " + data.message;
+                            resultMsg.className = "contact-result-msg error";
+                            resultMsg.style.display = 'block';
+                        }
+                    }
+                } catch (error) {
+                    if (resultMsg) {
+                        resultMsg.innerText = "Something went wrong. Please try again.";
+                        resultMsg.className = "contact-result-msg error";
+                        resultMsg.style.display = 'block';
+                    }
+                } finally {
+                    if (textSpan) textSpan.innerText = originalText;
+                    submitBtn.disabled = false;
+                }
             });
         }
 
